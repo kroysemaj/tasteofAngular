@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taste of Angular</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body  class="container" ng-app>
+
+  <div ng-init='theWho=["Roger Daltry", "Pete Townsend", "Keith Moon"]' >
+    <h3>Members of The Who in uppercase</h3>
+    <ul>
+      <li ng-repeat="member in theWho">{{ member | uppercase }}</li>
+    </ul>
+    <!-- The uppercase filter is a built in filter that will transform the data before it is presented on the page -->
+
+    <h3>Members of The Who in alphabetical order</h3>
+    <ul>
+      <li ng-repeat="member in theWho | orderBy:member">{{ member }}</li>
+    </ul>
+    <!-- The orderBy filter is a built in filter that will reorder the data set based on a pre-determined property -->
+
+    <h3>Members of The Who in filterd by name</h3>
+
+    <input type="text" ng-model="membersName">
+
+    <ul ng-init="theGratefulDead=['Jerry Garcia', 'Bob Weir', 'Ron \'Pigpen\' McKernan', 'Phil Lesh', 'Bill Kreutzmann']">
+      <li ng-repeat="bandmate in theGratefulDead | filter:membersName | orderBy: member">{{ bandmate }}</li>
+    </ul>
+    <!-- The filter filter (?!) allows a fuzzy search to be made of the data array -->
+  </div>
+
+</body>
+</html>
