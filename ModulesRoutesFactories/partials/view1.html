@@ -1,0 +1,21 @@
+<h3>Members of The Grateful Dead in filterd by name</h3>
+Name:
+<input type="text" ng-model="filter.membersNameOrInstrument">
+
+<ul ng-controller="SimpleController">
+  <li ng-repeat="bandmate in theDead | filter: filter.membersNameOrInstrument | orderBy: 'name'">{{ bandmate.name | uppercase }} : {{ bandmate.instrument }} </li>
+</ul>
+
+<br />
+<h2>Add a Bandmate:</h2>
+Name:
+<input type="text" placeholder="Enter a name" ng-model="newBandmate.name">
+<br />
+Instrument:
+<input type="text" placeholder="Enter a name" ng-model="newBandmate.instrument">
+<br />
+<br />
+<button ng-click='addBandmate()'>Add a bandmate!</button>
+<br />
+<br />
+<a href="#/view2" title="">View 2</a>

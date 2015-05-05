@@ -1,0 +1,9 @@
+<h3>Members of The Grateful Dead in filterd by instrument</h3>
+Instrument:
+<input type="text" ng-model="membersNameOrInstrument">
+
+<ul ng-controller="SimpleController">
+  <li ng-repeat="bandmate in theDead | filter: membersNameOrInstrument | orderBy: 'name' | limitTo: 3">{{ bandmate.name | uppercase }} : {{ bandmate.instrument }} </li>
+</ul>
+
+<a href="#/" title="">View 1</a>

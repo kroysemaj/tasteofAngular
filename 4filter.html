@@ -20,12 +20,12 @@
     </ul>
     <!-- The orderBy filter is a built in filter that will reorder the data set based on a pre-determined property -->
 
-    <h3>Members of The Who in filterd by name</h3>
+    <h3>Members of The Grateful Dead in filterd by name</h3>
 
-    <input type="text" ng-model="membersName">
+    <input type="text" ng-model="membersNameOrInstrument">
 
-    <ul ng-init="theGratefulDead=['Jerry Garcia', 'Bob Weir', 'Ron \'Pigpen\' McKernan', 'Phil Lesh', 'Bill Kreutzmann']">
-      <li ng-repeat="bandmate in theGratefulDead | filter:membersName | orderBy: member">{{ bandmate }}</li>
+    <ul ng-init="theGratefulDead=[{name: 'Jerry Garcia', instrument: 'guitar, vocals'}, {name: 'Bob Weir', instrument: 'guitar, vocals'}, {name: 'Ron \'Pigpen\' McKernan', instrument: 'keyboards, harmonica, vocals'},{name: 'Phil Lesh', instrument: 'bass, vocals'}, {name: 'Bill Kreutzmann', instrument: 'drums'}]">
+      <li ng-repeat="bandmate in theGratefulDead | filter: membersNameOrInstrument | orderBy: 'name' | limitTo: 3">{{ bandmate.name }} : {{ bandmate.instrument }} </li>
     </ul>
     <!-- The filter filter (?!) allows a fuzzy search to be made of the data array -->
   </div>

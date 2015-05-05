@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taste of Angular</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+  <!-- A simple function definition is no longer sufficient to create a controller as of Angular 1.3. I am using an older version in this case to demonstrate controllers, views, and scope without having to get into Modules just yet. -->
+</head>
+<body ng-app>
+
+  <h3>Members of The Grateful Dead in filterd by name</h3>
+
+  <input type="text" ng-model="membersNameOrInstrument">
+
+  <ul ng-controller="SimpleController">
+    <li ng-repeat="bandmate in theDead | filter: membersNameOrInstrument | orderBy: 'name' | limitTo: 3">{{ bandmate.name | uppercase }} : {{ bandmate.instrument }} </li>
+  </ul>
+
+  <script>
+    function SimpleController($scope) {
+      $scope.theDead = [
+        {name: 'Jerry Garcia', instrument: 'guitar, vocals'},
+        {name: 'Bob Weir', instrument: 'guitar, vocals'},
+        {name: 'Ron \'Pigpen\' McKernan', instrument: 'keyboards, harmonica, vocals'},
+        {name: 'Phil Lesh', instrument: 'bass, vocals'},
+        {name: 'Bill Kreutzmann', instrument: 'drums'}
+      ];
+    }
+  </script>
+
+</body>
+</html>
