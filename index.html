@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Markdown Page</title>
+  <!-- a dash of bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css">
+
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 3em;
+    }
+  </style>
+
+</head>
+
+<!-- the ng-app directive tells agular that this element contains angular code-->
+<body ng-app='mdPage'>
+  <article ng-controller="MainCtrl" class="container">
+    <section ng-bind-html="pageHtml"></section>
+  </article>
+
+
+  <!-- and a spoonfull of angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
+  <script src="./scripts/vendor/kramed.min.js"></script>
+  <script src="./scripts/vendor/angular-kramed.js"></script>
+  <script>
+    var app = angular.module('mdPage', ['gh.kramed','ngSanitize']);
+    app.controller('MainCtrl', ['$scope', '$http', 'kramed', function($scope, $http, $kramed) {
+
+      $http.get('workshop/workshop.md').success(function(data, status, headers, config) {
+        $scope.pageHtml = $kramed(data).replace(/<img/g, '<img class="img-responsive"');
+      });
+
+    }]);
+  </script>
+
+</body>
+</html>
