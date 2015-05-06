@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A Taste of Angular - Bare Bones</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+
+<!-- the ng-app directive tells agular that this element contains angular code-->
+<body ng-app>
+
+    <!-- ng-model creates a variable in the current scope -->
+    <p><input ng-model="words" /></p>
+    <p>{{ words }}</p> <!-- use moustache-style templates to display variables in active scope -->
+
+</body>
+</html>
