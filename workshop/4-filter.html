@@ -20,6 +20,12 @@
     </ul>
     <!-- The orderBy filter is a built in filter that will reorder the data set based on a pre-determined property -->
 
+    <h3>Members of The Who in reverse alphabetical order</h3>
+    <ul>
+      <li ng-repeat="member in theWho | orderBy:'-member'">{{ member }}</li>
+    </ul>
+    <!-- The orderBy filter is a built in filter that will reorder the data set based on a pre-determined property -->
+
     <h3>Members of The Grateful Dead in filterd by name</h3>
 
     <input type="text" ng-model="membersNameOrInstrument">
